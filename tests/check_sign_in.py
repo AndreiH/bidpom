@@ -38,6 +38,7 @@ class TestSignIn(BaseTest):
             lambda s: s.find_element(*self._persona_logged_in_indicator_locator).is_displayed())
 
     @pytest.mark.travis
+    @pytest.mark.xfail(reason="Bug 1105256 - Confirmation email is not received from http://beta.123done.org/")
     def test_sign_in_new_user_helper(self, mozwebqa):
         user = MockUser()
         from browserid.pages.sign_in import SignIn
@@ -50,6 +51,7 @@ class TestSignIn(BaseTest):
         self.email_appears_valid(mail[0]['text'])
 
     @pytest.mark.travis
+    @pytest.mark.xfail(reason="Bug 1105256 - Confirmation email is not received from http://beta.123done.org/")
     def test_sign_in_new_user(self, mozwebqa):
         user = MockUser()
         from browserid.pages.sign_in import SignIn
@@ -71,6 +73,7 @@ class TestSignIn(BaseTest):
         self.email_appears_valid(mail[0]['text'])
 
     @pytest.mark.travis
+    @pytest.mark.xfail(reason="Bug 1105256 - Confirmation email is not received from http://beta.123done.org/")
     def test_sign_in_returning_user(self, mozwebqa):
         self.create_verified_user(mozwebqa.selenium, mozwebqa.timeout)
         mozwebqa.selenium.get('%s/' % mozwebqa.base_url)

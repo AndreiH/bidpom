@@ -17,6 +17,7 @@ import restmail
 class TestResetPassword(BaseTest):
 
     @pytest.mark.travis
+    @pytest.mark.xfail(reason="Bug 1105256 - Confirmation email is not received from http://beta.123done.org/")
     def test_reset_password(self, mozwebqa):
         user = self.create_verified_user(mozwebqa.selenium, mozwebqa.timeout)
         mozwebqa.selenium.get('%s/' % mozwebqa.base_url)
